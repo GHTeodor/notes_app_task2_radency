@@ -1,10 +1,17 @@
 import React from 'react';
 
-function App() {
-    return (
-        <div>
+import {NotesTable} from "./components";
+import {thead, theadSummary} from "./constants";
+import {useAppSelector} from "./hooks";
 
-        </div>
+function App() {
+    const {archived} = useAppSelector(state => state.noteSlice);
+
+    return (
+        <>
+            <NotesTable thead={thead}/>
+            {archived.length && <NotesTable thead={theadSummary}/>}
+        </>
     );
 }
 
